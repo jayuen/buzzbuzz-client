@@ -28,16 +28,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 );
-
-//const buzzes = [
-//  { name: 'jason', winner: true },
-//  { name: 'amber', winner: false },
-//  { name: 'marlowe', winner: false },
-//];
-//
-//ReactDOM.render(
-//  <BuzzResults buzzes={buzzes}/>,
-//  document.getElementById('app')
-//);
-//
-
