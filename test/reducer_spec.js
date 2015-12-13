@@ -30,11 +30,11 @@ describe('reducer', () => {
   });
 
   it('handles NEW_BUZZ_SESSION', () => {
-    const initialState = fromJS([{ name: 'jason', winner: true }]);
+    const initialState = fromJS({ buzzes: [{ name: 'jason', winner: true }]});
     const action = resetBuzzSession();
 
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.equal(fromJS([]));
+    expect(nextState).to.equal(fromJS({ buzzes: []}));
   });
 });

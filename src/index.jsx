@@ -10,16 +10,14 @@ import io from 'socket.io-client';
 require('./stylesheets/application.scss');
 
 const store = createStore(reducer);
-store.dispatch(addBuzzResult({ name: 'jason', winner: true }));
-store.dispatch(addBuzzResult({ name: 'amber', winner: false }));
-store.dispatch(addBuzzResult({ name: 'marlowe', winner: false }));
+store.dispatch(resetBuzzSession());
 
 const socket = io.connect('localhost:5001');
-socket.on('buzz', function(state) {
-  console.log('receiving buzz');
+socket.on('buzz', function(buzz) {
+  store.dispatch(addBuzzResult(buzz));
 });
-socket.on('new-buzz-session', function(state) {
-  console.log('receiving new-buzz-session');
+socket.on('new-buzz-session', function(newBuzzSession) {
+  store.dispatch(resetBuzzSession());
 });
 
 ReactDOM.render(
