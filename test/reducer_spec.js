@@ -1,15 +1,15 @@
 import { List, Map, fromJS } from 'immutable';
 import { expect } from 'chai';
+import { addBuzzResult, resetBuzzSession } from '../src/action_creators';
 
 import reducer from '../src/reducer';
 
 describe('reducer', () => {
   it('handles ADD_BUZZ_RESULT', () => {
-    const initialState = fromJS([{ name: 'jason', winner: true }])
-    const action = {
-      type: 'ADD_BUZZ_RESULT',
-      buzz: { name: 'amber', winner: false }
-    };
+    const buzz = { name: 'amber', winner: false };
+    const action = addBuzzResult(buzz);
+    const initialState = fromJS([{ name: 'jason', winner: true }]);
+
     const nextState = reducer(initialState, action);
 
     expect(nextState).to.equal(fromJS([
@@ -18,9 +18,21 @@ describe('reducer', () => {
     ]));
   });
 
+  it('handles ADD_BUZZ_RESULT without initial state', () => {
+    const buzz = { name: 'amber', winner: true };
+    const action = addBuzzResult(buzz);
+
+    const nextState = reducer(undefined, action);
+
+    expect(nextState).to.equal(fromJS([
+      { name: 'amber', winner: true }
+    ]));
+  });
+
   it('handles NEW_BUZZ_SESSION', () => {
     const initialState = fromJS([{ name: 'jason', winner: true }]);
-    const action = { type: 'RESET_BUZZ_SESSION' };
+    const action = resetBuzzSession();
+
     const nextState = reducer(initialState, action);
 
     expect(nextState).to.equal(fromJS([]));
