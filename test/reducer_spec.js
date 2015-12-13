@@ -8,14 +8,14 @@ describe('reducer', () => {
   it('handles ADD_BUZZ_RESULT', () => {
     const buzz = { name: 'amber', winner: false };
     const action = addBuzzResult(buzz);
-    const initialState = fromJS([{ name: 'jason', winner: true }]);
+    const initialState = fromJS({ buzzes: [{ name: 'jason', winner: true }] });
 
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.equal(fromJS([
+    expect(nextState).to.equal(fromJS({ buzzes: [
       { name: 'jason', winner: true },
       { name: 'amber', winner: false }
-    ]));
+    ]}));
   });
 
   it('handles ADD_BUZZ_RESULT without initial state', () => {
@@ -24,9 +24,9 @@ describe('reducer', () => {
 
     const nextState = reducer(undefined, action);
 
-    expect(nextState).to.equal(fromJS([
+    expect(nextState).to.equal(fromJS({ buzzes: [ 
       { name: 'amber', winner: true }
-    ]));
+    ]}));
   });
 
   it('handles NEW_BUZZ_SESSION', () => {

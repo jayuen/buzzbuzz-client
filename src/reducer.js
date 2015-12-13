@@ -1,9 +1,9 @@
-import {List, fromJS} from 'immutable';
+import {Map, fromJS} from 'immutable';
 
-export default function(state = List(), action) {
+export default function(state = fromJS({buzzes: []}), action) {
   switch (action.type) {
     case 'ADD_BUZZ_RESULT':
-      return state.push(fromJS(action.buzz));
+      return state.update('buzzes', list => list.push(fromJS(action.buzz)));
     case 'RESET_BUZZ_SESSION':
       return state.clear();
   }

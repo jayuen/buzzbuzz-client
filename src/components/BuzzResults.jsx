@@ -1,7 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 const classNames = require('classnames');
 
-export default React.createClass({
+const BuzzResults = React.createClass({
   render: function() {
     return (<div className="buzz-results">
       {this.props.buzzes.map(buzz =>
@@ -11,3 +12,11 @@ export default React.createClass({
     );
   },
 });
+
+function mapStateToProps(state) {
+  return {
+    buzzes: state.get('buzzes')
+  };
+}
+
+export const BuzzResultsContainer = connect(mapStateToProps)(BuzzResults);
