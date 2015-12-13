@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BuzzResultsContainer from './components/BuzzResults';
+import { BuzzResults, BuzzResultsContainer } from './components/BuzzResults';
 import {createStore} from 'redux';
 import { addBuzzResult, resetBuzzSession } from './action_creators';
 import {Provider} from 'react-redux';
@@ -19,9 +19,14 @@ const buzzes = [
   { name: 'marlowe', winner: false },
 ];
 
+//ReactDOM.render(
+//  <Provider store={store}>
+//    <BuzzResultsContainer />,
+//  </Provider>,
+//  document.getElementById('app')
+//);
+
 ReactDOM.render(
-  <Provider store={store}>
-    <BuzzResultsContainer />,
-  </Provider>,
+  <BuzzResults buzzes={buzzes}/>,
   document.getElementById('app')
 );

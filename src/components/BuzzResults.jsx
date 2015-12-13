@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 const classNames = require('classnames');
 
-const BuzzResults = React.createClass({
+export const BuzzResults = React.createClass({
   render: function() {
     return (<div className="buzz-results">
       {this.props.buzzes.map(buzz =>
