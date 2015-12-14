@@ -6,7 +6,7 @@ export const BuzzResults = React.createClass({
   render: function() {
     return (<div className="buzz-results">
       {this.props.buzzes.map(buzz =>
-        <div key={buzz.id} className={classNames('buzz', { 'winner': buzz.winner, 'loser': !buzz.winner })}>{buzz.name}</div>
+        <div key={buzz.get('id')} className={classNames('buzz', { 'winner': buzz.get('winner'), 'loser': !buzz.get('winner') })}>{buzz.get('name')}</div>
       )}
     </div>
     );
