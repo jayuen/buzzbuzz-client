@@ -7,13 +7,14 @@ import reducer from './reducer';
 import io from 'socket.io-client';
 import { createStore, compose, applyMiddleware } from "redux";
 import api from "./api";
-
 require('./stylesheets/application.scss');
 
+// setup store and allow for HTTP requests via middleware
 const store = compose(
   applyMiddleware(api)
 )(createStore)(reducer);
 
+// setup socket.io connection to listen to async events
 const socket = io.connect('localhost:5001');
 socket.on('buzz', function(buzz) {
   store.dispatch(actionCreators.addBuzzResult(buzz));
@@ -21,7 +22,9 @@ socket.on('buzz', function(buzz) {
 socket.on('new-buzz-session', function() {
   store.dispatch(actionCreators.resetBuzzSession());
 });
-store.dispatch(actionCreators.resetBuzzSession());
+
+// create a new buzz session every time the page reloads
+store.dispatch(actionCreators.resetBuzzSessionViaApi());
 
 ReactDOM.render(
   <Provider store={store}>
