@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BuzzResults, BuzzResultsContainer } from './components/BuzzResults';
-import { addBuzzResult, resetBuzzSession, resetBuzzSessionViaApi } from './action_creators';
+import * as actionCreators from './action_creators';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
 import io from 'socket.io-client';
@@ -16,12 +16,12 @@ const store = compose(
 
 const socket = io.connect('localhost:5001');
 socket.on('buzz', function(buzz) {
-  store.dispatch(addBuzzResult(buzz));
+  store.dispatch(actionCreators.addBuzzResult(buzz));
 });
 socket.on('new-buzz-session', function() {
-  store.dispatch(resetBuzzSession());
+  store.dispatch(actionCreators.resetBuzzSession());
 });
-store.dispatch(resetBuzzSession());
+store.dispatch(actionCreators.resetBuzzSession());
 
 ReactDOM.render(
   <Provider store={store}>
