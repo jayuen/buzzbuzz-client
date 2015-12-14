@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 const classNames = require('classnames');
+import * as actionCreators from '../action_creators';
 
 export const BuzzResults = React.createClass({
   classes: function(buzz) {
@@ -9,11 +10,16 @@ export const BuzzResults = React.createClass({
 
   render: function() {
     return (
-      <div className="buzz-results">
-      {this.props.buzzes.map(buzz =>
-        <div key={buzz.get('id')} className={this.classes(buzz)}>{buzz.get('name')}</div>
-      )}
-    </div>
+      <div>
+        <div>
+          <button onClick={() => this.props.resetBuzzSession()}>New buzz session</button>
+        </div>
+        <div className="buzz-results">
+        {this.props.buzzes.map(buzz =>
+          <div key={buzz.get('id')} className={this.classes(buzz)}>{buzz.get('name')}</div>
+        )}
+        </div>
+      </div>
     );
   },
 });
@@ -24,4 +30,4 @@ function mapStateToProps(state) {
   };
 }
 
-export const BuzzResultsContainer = connect(mapStateToProps)(BuzzResults);
+export const BuzzResultsContainer = connect(mapStateToProps, actionCreators)(BuzzResults);
