@@ -12,7 +12,7 @@ export const BuzzResults = React.createClass({
     return (
       <div>
         <div>
-          <button onClick={() => this.props.resetBuzzSession()}>New buzz session</button>
+          <button onClick={() => this.props.resetBuzzSessionViaApi()}>New buzz session</button>
         </div>
         <div className="buzz-results">
         {this.props.buzzes.map(buzz =>
