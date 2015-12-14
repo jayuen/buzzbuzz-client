@@ -20,7 +20,7 @@ socket.on('buzz', function(buzz) {
   store.dispatch(actionCreators.addBuzzResult(buzz));
 });
 socket.on('new-buzz-session', function() {
-  store.dispatch(actionCreators.resetBuzzSession());
+  store.dispatch(actionCreators.clearBuzzes());
 });
 
 // create a new buzz session every time the page reloads

@@ -1,6 +1,6 @@
 import { List, Map, fromJS } from 'immutable';
 import { expect } from 'chai';
-import { addBuzzResult, resetBuzzSession } from '../src/action_creators';
+import { addBuzzResult, clearBuzzes } from '../src/action_creators';
 
 import reducer from '../src/reducer';
 
@@ -31,7 +31,7 @@ describe('reducer', () => {
 
   it('handles NEW_BUZZ_SESSION', () => {
     const initialState = fromJS({ buzzes: [{ name: 'jason', winner: true }]});
-    const action = resetBuzzSession();
+    const action = clearBuzzes();
 
     const nextState = reducer(initialState, action);
 

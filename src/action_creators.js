@@ -7,9 +7,9 @@ export function addBuzzResult(buzz) {
   };
 }
 
-export function resetBuzzSession() {
+export function clearBuzzes() {
   return {
-    type: 'RESET_BUZZ_SESSION'
+    type: 'CLEAR_BUZZES'
   };
 }
 
