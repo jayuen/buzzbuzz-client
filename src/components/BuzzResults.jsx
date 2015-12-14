@@ -10,11 +10,11 @@ export const BuzzResults = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="buzz-results">
         <div>
           <button onClick={() => this.props.resetBuzzSessionViaApi()}>New buzz session</button>
         </div>
-        <div className="buzz-results">
+        <div className="buzzes">
         {this.props.buzzes.map(buzz =>
           <div key={buzz.get('id')} className={this.classes(buzz)}>{buzz.get('name')}</div>
         )}

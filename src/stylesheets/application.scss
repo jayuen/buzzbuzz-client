@@ -1,26 +1,36 @@
 .winner {
   background-color: lightgreen;
   color: darkgreen;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 72px;
-  text-align: center;
-  margin: auto;
+  font-size: 80px;
 }
 
 .loser {
-  background-color: lightgray
+  background-color: lightgray;
+  color: darkgray; 
+  font-size: 40px;
 }
 
 .buzz {
   width: 100%;
-  padding: 15px;
   flex-grow: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+
 }
 
-.buzz-results {
+.buzzes {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.buzz-results {
+  background-color: lightgrey;
+  width: 100%;
+  height: 100%;
 }
 
 #app {
