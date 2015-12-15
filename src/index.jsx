@@ -7,6 +7,9 @@ import reducer from './reducer';
 import io from 'socket.io-client';
 import { createStore, compose, applyMiddleware } from "redux";
 import api from "./api";
+import Router, {Route} from 'react-router';
+import App from './components/App';
+
 require('./stylesheets/application.scss');
 
 // setup store and allow for HTTP requests via middleware
@@ -26,9 +29,14 @@ socket.on('new-buzz-session', function() {
 // create a new buzz session every time the page reloads
 store.dispatch(actionCreators.resetBuzzSessionViaApi());
 
+// setup routes
+const routes = <Route component={App}>
+  <Route path="/buzz_session" component={BuzzResultsContainer} />
+</Route>;
+
 ReactDOM.render(
   <Provider store={store}>
-    <BuzzResultsContainer />
+    <Router>{routes}</Router>
   </Provider>,
   document.getElementById('app')
 );
