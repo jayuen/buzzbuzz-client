@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BuzzResults, BuzzResultsContainer } from './components/BuzzResults';
-import * as actionCreators from './action_creators';
 import {Provider} from 'react-redux';
-import reducer from './reducer';
-import io from 'socket.io-client';
-import { createStore, compose, applyMiddleware } from "redux";
-import api from "./api";
 import Router, {Route} from 'react-router';
+import { createStore, compose, applyMiddleware } from "redux";
+import io from 'socket.io-client';
+
+import { BuzzResultsContainer } from './components/BuzzResults';
+import { BuzzerContainer } from './components/Buzzer';
 import App from './components/App';
+
+import * as actionCreators from './action_creators';
+import reducer from './reducer';
+import api from "./api";
 
 require('./stylesheets/application.scss');
 
@@ -26,12 +29,10 @@ socket.on('new-buzz-session', function() {
   store.dispatch(actionCreators.clearBuzzes());
 });
 
-// create a new buzz session every time the page reloads
-store.dispatch(actionCreators.resetBuzzSessionViaApi());
-
 // setup routes
 const routes = <Route component={App}>
   <Route path="/buzz_session" component={BuzzResultsContainer} />
+  <Route path="/" component={BuzzerContainer} />
 </Route>;
 
 ReactDOM.render(

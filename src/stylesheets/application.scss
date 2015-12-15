@@ -33,6 +33,23 @@
   height: 100%;
 }
 
+.buzzer {
+  width: 100%;
+
+  label {
+    padding-right: 10px;
+  }
+
+  .buzzer-button {
+    width: 100%;
+    font-size: 200px;
+  }
+
+  .buzzer-input {
+    width: 100%;
+  }
+}
+
 #app {
   display: flex;
   position: fixed;
