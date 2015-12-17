@@ -21,7 +21,7 @@ const store = compose(
 )(createStore)(reducer);
 
 // setup socket.io connection to listen to async events
-const socket = io.connect('localhost:5001');
+const socket = io.connect('projohn.local:5001');
 socket.on('buzz', function(buzz) {
   store.dispatch(actionCreators.addBuzzResult(buzz));
 });

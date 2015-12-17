@@ -1,6 +1,6 @@
 import { CALL_API } from "./api";
 
-const SERVER_URL = "localhost:3000";
+const SERVER_URL = "projohn.local:3000";
 
 export function addBuzzResult(buzz) {
   return {

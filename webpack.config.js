@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://projohn.local:8080',
     'webpack/hot/only-dev-server',
     './src/index.jsx'
   ],
@@ -22,7 +22,9 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    host: 'projohn.local',
+    port: 8080
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
