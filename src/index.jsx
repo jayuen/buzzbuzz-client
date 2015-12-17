@@ -23,7 +23,7 @@ const store = compose(
 const audioContext = new AudioContext();
 let audioBuffer;
 const request = new XMLHttpRequest();
-request.open('GET', 'sound2.mp3', true);
+request.open('GET', 'sound1.mp3', true);
 request.responseType = 'arraybuffer';
 request.onload = function () {
   const undecodedAudio = request.response;
@@ -36,7 +36,6 @@ request.send();
 // setup socket.io connection to listen to async events
 const socket = io.connect('projohn.local:5001');
 socket.on('buzz', function(buzz) {
-  console.log(buzz)
   if (buzz.winner === true) {
     const sourceBuffer = audioContext.createBufferSource();
     sourceBuffer.buffer = audioBuffer;
